@@ -7,8 +7,8 @@
     "callable-types": true,
     "class-name": true,
     "comment-format": [
-      true,
-      "check-space"
+      true
+      //"check-space"
     ],
     "curly": true,
     "eofline": true,
@@ -19,14 +19,13 @@
     ],
     "import-spacing": true,
     "indent": [
-      true,
-      "spaces"
+      "tabs"
+     // "spaces"
     ],
     "interface-over-type-literal": true,
     "label-position": true,
     "max-line-length": [
-      true,
-      140
+      false
     ],
     "member-access": false,
     "member-ordering": [

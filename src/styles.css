@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+  transform: none !important;
+}
+
+nav ,.navbar,.navbar-light{
+  background: #d2ff52; /* Old browsers */
+  background: -moz-linear-gradient(top, #d2ff52 0%, #91e842 100%)!important; /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #d2ff52 0%,#91e842 100%)!important;; /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #d2ff52 0%,#91e842 100%)!important;; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=0 )!important; /* IE6-9 */
+  margin-bottom: 0!important;
+}
+ .active > .nav-link{
+  color: #384160!important;
+  background-color: #AEE0DF!important;
+}
+app-header{
+  background-color: #fff!important;
+}

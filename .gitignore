@@ -41,3 +41,11 @@ yarn-error.log
 # System Files
 .DS_Store
 Thumbs.db
+/src/app/app.component.css.shim.ngstyle.ts
+/src/app/app.component.ngfactory.ts
+/src/app/app.module.ngfactory.ts
+/src/app/import.service.ts
+
+*.shim.ngstyle.ts
+*.ngfactory.ts
+*.ngsummary.json
