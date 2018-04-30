@@ -1,0 +1,30 @@
+.error{
+  color:#ff7355
+}
+
+.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:first-child>.btn-group:not(:first-child)>.btn, .input-group-btn:first-child>.btn:not(:first-child), .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group>.btn, .input-group-btn:last-child>.dropdown-toggle{
+  padding: 17px!important;
+}
+#locationField, #controls {
+  position: relative;
+  width: 480px;
+}
+
+.label {
+  text-align: right;
+  font-weight: bold;
+  width: 100px;
+  color: #303030;
+}
+#address {
+  background-color: #f0f0ff;
+  width: 600px;
+  padding: 15px;
+  margin-left: 0;
+}
+
+#address input{
+  margin: 7px;
+  border: 1px solid;
+}
+

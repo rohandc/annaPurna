@@ -1,0 +1,14 @@
+.currency{
+  color: #216C2A;
+}
+mat-expansion-panel{
+  margin: 8px!important;
+  border: 1px solid purple!important;
+  box-shadow:280ms cubic-bezier(.4,0,.2,1)!important;
+}
+mat-card-title{
+  font-size: 18px!important;
+  font-weight: 600!important;
+  letter-spacing: 2px!important;
+  margin-top:10px!important;
+}

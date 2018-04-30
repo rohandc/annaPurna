@@ -1,0 +1,200 @@
+<div class="container">
+  <h1>Account Settings</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-12 personal-info">
+      <div class="col-md-7">
+        <form class="form-horizontal" role="form" [formGroup]="accountForm" (ngSubmit)="onSubmit(accountForm.value)">
+          <fieldset>
+            <div class="form-group">
+              <label class="col-md-4 control-label">Username</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input  formControlName="user_name" placeholder="Username" class="form-control"  type="text">
+                </div>
+                <p *ngIf="accountForm.get('user_name').touched && accountForm.get('user_name').hasError('isRequired')" class="error">This field is required!</p>
+                <p [hidden]="!accountForm.get('user_name').hasError('isDuplicate')" class="error" >Username is already taken please choose a another one</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">First Name</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input  formControlName="first_name" placeholder="First Name" class="form-control"  type="text">
+                </div>
+                <p class="error" *ngIf="accountForm.get('first_name').touched && accountForm.get('first_name').hasError('required')">This field is required!</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Last Name</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input formControlName="last_name" placeholder="Last Name" class="form-control"  type="text">
+                </div>
+                <p class="error" *ngIf="accountForm.get('last_name').touched && accountForm.get('last_name').hasError('required')">This field is required!</p>
+              </div>
+            </div>
+            <div  formGroupName="passwords">
+              <div class="form-group">
+                <label class="col-md-4 control-label" >Password</label>
+                <div class="col-md-8 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input formControlName="user_password" placeholder="Password" class="form-control"  type="password">
+                  </div>
+                  <p class="error" *ngIf="accountForm.get(['passwords','user_password']).touched && accountForm.get(['passwords','user_password']).hasError('required')">This field is required!</p>
+                  <p class="error">{{passCount}}</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-4 control-label" >Confirm Password</label>
+                <div class="col-md-8 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input formControlName="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
+                  </div>
+                  <p class="error" > {{ passMismatch}} </p>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <label class="control-label">Address</label>
+                <div class="col-md-8 inputGroupContainer m-left-2" >
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <!-- <input type="text" [options]='options'
+                            (setAddress) = "getAddress($event)"
+                            (change)="clearAddress($event)"
+                            ng2-google-place-autocomplete required class="form-control" #search/>-->
+                    <input type="text"
+                           (setAddress) = "getAddress($event)"
+                           (change)="clearAddress($event)"
+                           required class="form-control" #search/>
+                  </div>
+
+
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 offset-md-3" formGroupName="address" id="address">
+                  <div class="row">
+                    <span class="label">Street address</span>
+                    <input class="field" id="street_address" formControlName="street_address"  />
+                    <span class="label">City</span>
+                    <input class="field" id="locality" formControlName="locality"  />
+                  </div>
+                  <div class="row">
+                    <span class="label">State</span>
+                    <input class="field" id="state"  formControlName="administrative_area_level_1" />
+                    <span class="label">Country</span>
+                    <input class="field" id="country"  formControlName="country" />
+                  </div>
+                  <div class="row">
+                    <span class="label">Postal code</span>
+                    <input class="field" id="postal_code" formControlName="postal_code" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">E-Mail</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                  <input formControlName="email" placeholder="E-Mail Address" class="form-control"  type="text">
+
+                </div>
+                <p class="error" *ngIf="accountForm.get('email').touched && accountForm.get('email').hasError('required')">This field is required!</p>
+                <p class="error" *ngIf="accountForm.get('email').touched && accountForm.get('email').hasError('email')">Enter a Valid email</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">Contact No.</label>
+              <div class="col-md-8 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                  <input formControlName="contact_no" placeholder="(639)" minlength="10"  maxlength="10" class="form-control" type="text" appNumberOnly="true">
+
+                </div>
+                <p class="error" *ngIf="accountForm.get('contact_no').touched && accountForm.get('contact_no').hasError('required')">This field is required!</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label"></label>
+              <div class="col-md-4"><br>
+                <button type="submit" class="btn btn-warning"  >SUBMIT <span class="glyphicon glyphicon-send"></span></button>
+              </div>
+            </div>
+            <div>
+            </div>
+          </fieldset>
+          {{ accountForm ?. errors | json }}
+        </form>
+      </div>
+      <div class="col-md-5" [formGroup]="accountForm">
+        <div class="row">
+          <div class="text-center">
+            <agm-map  [latitude]="lat" [zoom]="zoom" zoomControl="true" [longitude]="lng" [scrollwheel]="false" [mapDraggable]="true" #map>
+            <agm-data-layer *ngIf="!(userGeoJson | async)?.length" [style]="styleFunc" [geoJson]="nfGeoJson" (layerClick)="markerSelect($event)"  >
+              </agm-data-layer>
+              <ng-container *ngIf="isSet$|async">
+              <!-- <agm-data-layer [geoJson]="userGeoJson|async" [style]="styleFunc2" >
+                </agm-data-layer>-->
+                <agm-marker *ngFor="let location of userGeoJson | async" [latitude]="location.lat" [longitude]="location.lng" [style]="styleFunc2" >
+
+                </agm-marker>
+
+              </ng-container>
+              <agm-marker [latitude]="lat" [longitude]="lng" iconUrl="./assets/images/human.png" ></agm-marker>
+              <agm-circle [latitude]="lat" [longitude]="lng" [radius]="10000" ></agm-circle>
+            </agm-map>
+          </div>
+        </div>
+
+        <mat-accordion class="row">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                No Frills
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="mat-expansion-panel-body" formGroupName="nfAddress">
+              <div class="row">
+                <button mat-button (click)="setStore()" *ngIf="!(isSet$ | async)">Set Store</button>
+                <button mat-button (click)="changeStore('NF')" *ngIf="isSet$ | async">Change Store</button>
+              </div>
+              {{storeName}} - {{storeID}}
+              <hr />
+              {{ storeAddress}}
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Food Basics
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+              <div class="mat-expansion-panel-body" formGroupName="fbAddress">
+
+                <div class="row">
+                  <button mat-button (click)="setStore()" *ngIf="!(isSet$ | async)">Set Store</button>
+                  <button mat-button (click)="changeStore('NF')" *ngIf="isSet$ | async">Change Store</button>
+                </div>
+                {{storeName}} - {{storeID}}
+                <hr />
+                {{ storeAddress}}
+              </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
